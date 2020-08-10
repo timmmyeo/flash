@@ -44,13 +44,17 @@ function App() {
   ]);
 
   const handleSubmit = (id, content) => {
-    setFlashcards(
-      flashcards.map(flashcard => {
-        if (flashcard.id === id) flashcard.content = content;
-        return (
-          flashcard
-        )
-      })
+    setFlashcards(prevState => {
+      return (
+        prevState.map(flashcard => {
+          if (flashcard.id === id) flashcard.content = content;
+          return (
+            flashcard
+          )
+        })
+      )
+    }
+      
     )
   }
 
