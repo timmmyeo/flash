@@ -3,6 +3,7 @@ import { Grid } from "@material-ui/core";
 import Header from "./Header"
 import CardGrid from "./CardGrid"
 import AddNewCard from "./AddNewCard"
+import { v4 as uuid } from 'uuid';
 
 function App() {
   const [flashcards, setFlashcards] = React.useState([
@@ -115,10 +116,10 @@ function App() {
       if (!found) {
         newState = [...prevState,
         {
-          id: 16,
-          title: "NEW", 
-          subtitle: "NEW",
-          content: "this is some more tex6"
+          id: uuid(),
+          title: newFlashcard.title, 
+          subtitle: newFlashcard.subtitle,
+          content: newFlashcard.content
         }
       ]
       }
