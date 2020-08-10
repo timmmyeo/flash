@@ -44,7 +44,14 @@ function App() {
   ]);
 
   const handleSubmit = (id, content) => {
-    alert(content);
+    setFlashcards(
+      flashcards.map(flashcard => {
+        if (flashcard.id === id) flashcard.content = content;
+        return (
+          flashcard
+        )
+      })
+    )
   }
 
   
