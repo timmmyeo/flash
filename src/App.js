@@ -1,8 +1,8 @@
 import React from "react"
-import { Grid, Fab} from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import Header from "./Header"
 import CardGrid from "./CardGrid"
-import AddIcon from '@material-ui/icons/Add';
+import AddNewCard from "./AddNewCard"
 
 function App() {
   const [flashcards, setFlashcards] = React.useState([
@@ -145,15 +145,9 @@ function App() {
         </Grid>
       </Grid>
       <br />
-      <Grid container>
-        <Grid item xs={10} md={11} />
-        <Grid item xs={1}>
-          <Fab color="primary" aria-label="add">
-            <AddIcon />
-          </Fab>
-        </Grid>
-        <Grid item xs={1} md={0} />
-      </Grid>
+        <AddNewCard 
+          handleSubmit={(id, newFlashcard) => handleSubmit(id, newFlashcard)}
+          />
       <br />
     </div>
   )

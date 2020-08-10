@@ -19,6 +19,7 @@ const useStyles = makeStyles({
 
 
 function FlashCard(props) {
+  // I realise this is the same as in AddNewCard, I'll think about how to abstract this later
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {
@@ -60,7 +61,7 @@ function FlashCard(props) {
                 size="small" 
                 onClick={handleOpen}>
                   Edit
-                </Button>
+              </Button>
             </Grid>
             <Grid item xs={8} md={8}/>
             <Grid item xs={2} md={2} align="center">
@@ -77,6 +78,7 @@ function FlashCard(props) {
         </CardActions>
       </Card>
       <EditFlashcardDialog 
+        dialogTitle={"Edit"}
         open={open} 
         handleClose={handleClose}
         onSubmit={(e, id, newFlashcard) => handleSubmit(e, id, newFlashcard)}

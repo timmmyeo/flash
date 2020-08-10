@@ -15,7 +15,7 @@ function EditFlashcardDialog(props) {
         aria-describedby="alert-dialog-description"
       >
         <form onSubmit={(e) => props.onSubmit(e, props.flashcard.id, {title: title, subtitle: subtitle, content: content})}>
-        <DialogTitle id="alert-dialog-title">{"Edit"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{props.dialogTitle}</DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
