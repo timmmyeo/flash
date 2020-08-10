@@ -29,9 +29,9 @@ function FlashCard(props) {
     setOpen(true);
   };
 
-  const handleSubmit = (e, id, content) => {
+  const handleSubmit = (e, id, newFlashcard) => {
     e.preventDefault();
-    props.onSubmit(id, content);
+    props.onSubmit(id, newFlashcard);
     handleClose();
   }
 
@@ -79,7 +79,7 @@ function FlashCard(props) {
       <EditFlashcardDialog 
         open={open} 
         handleClose={handleClose}
-        onSubmit={handleSubmit}
+        onSubmit={(e, id, newFlashcard) => handleSubmit(e, id, newFlashcard)}
         flashcard={props.flashcard}
       />
     </div>

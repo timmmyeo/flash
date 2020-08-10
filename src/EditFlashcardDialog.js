@@ -4,6 +4,8 @@ import { Dialog, DialogActions, DialogTitle, DialogContent, Button, TextField} f
 
 function EditFlashcardDialog(props) {
   const [content, setContent] = React.useState(props.flashcard.content);
+  const [title, setTitle] = React.useState(props.flashcard.title);
+  const [subtitle, setSubtitle] = React.useState(props.flashcard.subtitle);
 
   return (
       <Dialog
@@ -12,8 +14,30 @@ function EditFlashcardDialog(props) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <form onSubmit={(e) => props.onSubmit(e, props.flashcard.id, content)}>
+        <form onSubmit={(e) => props.onSubmit(e, props.flashcard.id, {title: title, subtitle: subtitle, content: content})}>
         <DialogTitle id="alert-dialog-title">{"Edit"}</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            value={title}
+            label="Title"
+            variant="outlined"
+            id="title"
+            fullWidth
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </DialogContent>
+        <DialogContent>
+          <TextField
+            autoFocus
+            value={subtitle}
+            label="Subtitle"
+            variant="outlined"
+            id="subtitle"
+            fullWidth
+            onChange={(e) => setSubtitle(e.target.value)}
+          />
+        </DialogContent>
         <DialogContent>
           <TextField
             autoFocus

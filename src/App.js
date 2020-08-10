@@ -1,7 +1,8 @@
 import React from "react"
-import { Grid } from "@material-ui/core";
+import { Grid, Fab} from "@material-ui/core";
 import Header from "./Header"
 import CardGrid from "./CardGrid"
+import AddIcon from '@material-ui/icons/Add';
 
 function App() {
   const [flashcards, setFlashcards] = React.useState([
@@ -41,13 +42,71 @@ function App() {
       subtitle: "subtitle6",
       content: "this is some more tex6"
     },
+    {
+      id: 7,
+      title: "6a", 
+      subtitle: "subtitle6",
+      content: "this is some more tex6"
+    },
+    {
+      id: 8,
+      title: "6a", 
+      subtitle: "subtitle6",
+      content: "this is some more tex6"
+    },
+    {
+      id: 9,
+      title: "6a", 
+      subtitle: "subtitle6",
+      content: "this is some more tex6"
+    },
+    {
+      id: 10,
+      title: "6a", 
+      subtitle: "subtitle6",
+      content: "this is some more tex6"
+    },
+    {
+      id: 11,
+      title: "6a", 
+      subtitle: "subtitle6",
+      content: "this is some more tex6"
+    },
+    {
+      id: 12,
+      title: "6a", 
+      subtitle: "subtitle6",
+      content: "this is some more tex6"
+    },
+    {
+      id: 13,
+      title: "6a", 
+      subtitle: "subtitle6",
+      content: "this is some more tex6"
+    },
+    {
+      id: 14,
+      title: "6a", 
+      subtitle: "subtitle6",
+      content: "this is some more tex6"
+    },
+    {
+      id: 15,
+      title: "6a", 
+      subtitle: "subtitle6",
+      content: "this is some more tex6"
+    },
   ]);
 
-  const handleSubmit = (id, content) => {
+  const handleSubmit = (id, newFlashcard) => {
     setFlashcards(prevState => {
       return (
         prevState.map(flashcard => {
-          if (flashcard.id === id) flashcard.content = content;
+          if (flashcard.id === id) {
+            flashcard.content = newFlashcard.content;
+            flashcard.subtitle = newFlashcard.subtitle;
+            flashcard.title = newFlashcard.title;
+          }
           return (
             flashcard
           )
@@ -78,13 +137,24 @@ function App() {
           <Grid item xs={10}>
             <CardGrid 
               flashcards={flashcards}
-              handleSubmit={(id, value) => handleSubmit(id, value)}
+              handleSubmit={(id, newFlashcard) => handleSubmit(id, newFlashcard)}
               handleDelete={(id) => handleDelete(id)}
             />
           </Grid>
           <Grid item xs={1}/>
         </Grid>
       </Grid>
+      <br />
+      <Grid container>
+        <Grid item xs={10} md={11} />
+        <Grid item xs={1}>
+          <Fab color="primary" aria-label="add">
+            <AddIcon />
+          </Fab>
+        </Grid>
+        <Grid item xs={1} md={0} />
+      </Grid>
+      <br />
     </div>
   )
   
