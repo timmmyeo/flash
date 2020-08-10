@@ -36,7 +36,7 @@ function App() {
       content: "this is some more tex5"
     },
     {
-      id: 5,
+      id: 6,
       title: "6a", 
       subtitle: "subtitle6",
       content: "this is some more tex6"
@@ -54,8 +54,15 @@ function App() {
         })
       )
     }
-      
     )
+  }
+  
+  const handleDelete = (id) => {
+    setFlashcards(prevState => {
+      return (
+        prevState.filter(flashcard => flashcard.id !== id)
+      )
+    })
   }
 
   
@@ -72,6 +79,7 @@ function App() {
             <CardGrid 
               flashcards={flashcards}
               handleSubmit={(id, value) => handleSubmit(id, value)}
+              handleDelete={(id) => handleDelete(id)}
             />
           </Grid>
           <Grid item xs={1}/>

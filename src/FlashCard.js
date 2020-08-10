@@ -64,7 +64,12 @@ function FlashCard(props) {
             </Grid>
             <Grid item xs={8} md={8}/>
             <Grid item xs={2} md={2} align="center">
-              <IconButton variant="contained" color="secondary" aria-label="delete">
+              <IconButton 
+                variant="contained" 
+                color="secondary" 
+                aria-label="delete"
+                onClick={() => props.handleDelete(props.flashcard.id)}
+              >
                 <DeleteIcon />
               </IconButton>
             </Grid>

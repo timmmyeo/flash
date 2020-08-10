@@ -11,6 +11,7 @@ function CardGrid(props) {
         <FlashCard 
           flashcard={flashcard}
           onSubmit={(id, value) => props.handleSubmit(id, value)}
+          handleDelete={(id) => props.handleDelete(id)}
         />
       </Grid>
     )
