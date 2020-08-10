@@ -8,7 +8,16 @@ function CardGrid(props) {
   const flashcardItems = props.flashcards.map(flashcard => {
     return (
       <Grid item xs={12} md={6} lg={4}>
-        <FlashCard title={flashcard.title} subtitle={flashcard.subtitle} content={flashcard.content}/>
+        <FlashCard 
+          open = {props.open}
+          handleClose = {props.handleClose}
+          handleOpen = {props.handleOpen}
+          handleSubmit = {(e) => props.handleSubmit(e)}
+          title={flashcard.title} 
+          subtitle={flashcard.subtitle} 
+          content={flashcard.content}
+          id={flashcard.id}
+        />
       </Grid>
     )
   })

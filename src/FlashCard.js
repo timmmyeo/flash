@@ -3,7 +3,6 @@ import { Card, CardContent, Typography, CardActions, Button, IconButton, Grid} f
 import DeleteIcon from '@material-ui/icons/Delete';
 import { makeStyles } from '@material-ui/core/styles';
 import EditFlashcard from "./EditFlashcard";
-import { useState } from 'react';
 
 const useStyles = makeStyles({
   root: {
@@ -19,15 +18,15 @@ const useStyles = makeStyles({
 
 
 function FlashCard(props) {
-  const [open, setOpen] = useState(false);
+  //const [open, setOpen] = useState(false);
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
   
-  const handleOpen = () => {
-    setOpen(true);
-  };
+  // const handleOpen = () => {
+  //   setOpen(true);
+  // };
 
   const classes = useStyles();
   return (
@@ -52,7 +51,7 @@ function FlashCard(props) {
                 variant="outlined" 
                 color="primary" 
                 size="small" 
-                onClick={handleOpen}>
+                onClick={props.handleOpen}>
                   Edit
                 </Button>
             </Grid>
@@ -65,7 +64,14 @@ function FlashCard(props) {
           </Grid>
         </CardActions>
       </Card>
-      <EditFlashcard open={open} handleClose={handleClose}/>
+      {/* This is the dialog box for editing the flashcard */}
+      <EditFlashcard
+        handleClose = {props.handleClose}
+        handleOpen = {props.handleOpen} 
+        handleSubmit={(e) => props.handleSubmit(e)} 
+        content={props.content} 
+        open={props.open}
+      />
     </div>
   )
 }
