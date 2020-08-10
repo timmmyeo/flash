@@ -32,7 +32,7 @@ export default function AddNewCard(props) {
             <AddIcon />
           </Fab>
         </Grid>
-        <Grid item xs={1} md={0} />
+        <Grid item xs={1} md={false} />
       </Grid>
       <EditFlashcardDialog 
         dialogTitle="New Card"

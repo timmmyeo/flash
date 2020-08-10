@@ -6,7 +6,7 @@ import AddNewCard from "./AddNewCard"
 
 function App() {
   const [flashcards, setFlashcards] = React.useState([
-    {
+    { 
       id: 1,
       title: "title", 
       subtitle: "subtitle1",
@@ -100,17 +100,30 @@ function App() {
 
   const handleSubmit = (id, newFlashcard) => {
     setFlashcards(prevState => {
+      let found = false;
+      let newState = prevState.map(flashcard => {
+        if (flashcard.id === id) {
+          found = true;
+          flashcard.content = newFlashcard.content;
+          flashcard.subtitle = newFlashcard.subtitle;
+          flashcard.title = newFlashcard.title;
+        }
+        return (
+          flashcard
+        )
+      })
+      if (!found) {
+        newState = [...prevState,
+        {
+          id: 16,
+          title: "NEW", 
+          subtitle: "NEW",
+          content: "this is some more tex6"
+        }
+      ]
+      }
       return (
-        prevState.map(flashcard => {
-          if (flashcard.id === id) {
-            flashcard.content = newFlashcard.content;
-            flashcard.subtitle = newFlashcard.subtitle;
-            flashcard.title = newFlashcard.title;
-          }
-          return (
-            flashcard
-          )
-        })
+        newState
       )
     }
     )
@@ -146,8 +159,8 @@ function App() {
       </Grid>
       <br />
         <AddNewCard 
-          handleSubmit={(id, newFlashcard) => handleSubmit(id, newFlashcard)}
-          />
+          onSubmit={(id, newFlashcard) => handleSubmit(id, newFlashcard)}
+        />
       <br />
     </div>
   )
