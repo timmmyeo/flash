@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardContent, Typography, CardActions, Button, IconButton, Grid} from "@material-ui/core";
 import DeleteIcon from '@material-ui/icons/Delete';
 import { makeStyles } from '@material-ui/core/styles';
-import EditFlashcard from "./EditFlashcard";
+import EditFlashcardDialog from "./EditFlashcardDialog";
 import { useState } from 'react';
 
 const useStyles = makeStyles({
@@ -29,20 +29,26 @@ function FlashCard(props) {
     setOpen(true);
   };
 
+  const handleSubmit = (e, id, content) => {
+    e.preventDefault();
+    props.onSubmit(id, content);
+    handleClose();
+  }
+
   const classes = useStyles();
   return (
     <div>
       <Card className={classes.root}>
         <CardContent>
           <Typography variant="h5" component="h2">
-            {props.title}
+            {props.flashcard.title}
           </Typography>
           <br />
           <Typography className={classes.pos} color="textSecondary">
-            {props.subtitle}
+            {props.flashcard.subtitle}
           </Typography>
           <Typography variant="body2" component="p">
-            {props.content}
+            {props.flashcard.content}
           </Typography>
         </CardContent>
         <CardActions>
@@ -65,7 +71,12 @@ function FlashCard(props) {
           </Grid>
         </CardActions>
       </Card>
-      <EditFlashcard open={open} handleClose={handleClose}/>
+      <EditFlashcardDialog 
+        open={open} 
+        handleClose={handleClose}
+        onSubmit={handleSubmit}
+        flashcard={props.flashcard}
+      />
     </div>
   )
 }

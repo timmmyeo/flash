@@ -3,65 +3,71 @@ import { Grid } from "@material-ui/core";
 import Header from "./Header"
 import CardGrid from "./CardGrid"
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      flashcards: [
-        {
-          title: "title", 
-          subtitle: "subtitle1",
-          content: "this is some text"
-        },
-        {
-          title: "title2", 
-          subtitle: "subtitle2",
-          content: "this is some more text"
-        },
-        {
-          title: "title3", 
-          subtitle: "3",
-          content: "this is some more text"
-        },
-        {
-          title: "yay", 
-          subtitle: "more",
-          content: "this is some more text"
-        },
-        {
-          title: "title2", 
-          subtitle: "subtitle2",
-          content: "this is some more text"
-        },
-        {
-          title: "title2", 
-          subtitle: "subtitle2",
-          content: "this is some more text"
-        },
-      ],
-    }
+function App() {
+  const [flashcards, setFlashcards] = React.useState([
+    {
+      id: 1,
+      title: "title", 
+      subtitle: "subtitle1",
+      content: "this is some text"
+    },
+    {
+      id: 2,
+      title: "title2", 
+      subtitle: "subtitle2",
+      content: "this is some more text"
+    },
+    {
+      id: 3,
+      title: "title3", 
+      subtitle: "3",
+      content: "no3"
+    },
+    {
+      id: 4,
+      title: "yay", 
+      subtitle: "more4",
+      content: "this is  more text4"
+    },
+    { 
+      id: 5,
+      title: "5thing", 
+      subtitle: "subtitle5",
+      content: "this is some more tex5"
+    },
+    {
+      id: 5,
+      title: "6a", 
+      subtitle: "subtitle6",
+      content: "this is some more tex6"
+    },
+  ]);
+
+  const handleSubmit = (id, content) => {
+    alert(content);
   }
 
   
 
-  render() {
-    return(
-      <div>
-        <Grid container direction="column">
-          <Grid item>
-            <Header />
-          </Grid>
-          <Grid item container>
-            <Grid item xs={1}/>
-            <Grid item xs={10}>
-              <CardGrid flashcards={this.state.flashcards}/>
-            </Grid>
-            <Grid item xs={1}/>
-          </Grid>
+  return(
+    <div>
+      <Grid container direction="column">
+        <Grid item>
+          <Header />
         </Grid>
-      </div>
-    )
-  }
+        <Grid item container>
+          <Grid item xs={1}/>
+          <Grid item xs={10}>
+            <CardGrid 
+              flashcards={flashcards}
+              handleSubmit={(id, value) => handleSubmit(id, value)}
+            />
+          </Grid>
+          <Grid item xs={1}/>
+        </Grid>
+      </Grid>
+    </div>
+  )
   
 }
 

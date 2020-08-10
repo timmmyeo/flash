@@ -3,14 +3,16 @@ import { Dialog, DialogActions, DialogTitle, DialogContent, Button, TextField} f
 
 
 function EditFlashcardDialog(props) {
-  const [content, setContent] = React.useState("Testing");
+  const [content, setContent] = React.useState(props.flashcard.content);
+
   return (
-    <Dialog
+      <Dialog
         open={props.open}
         onClose={props.handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
+        <form onSubmit={(e) => props.onSubmit(e, props.flashcard.id, content)}>
         <DialogTitle id="alert-dialog-title">{"Edit"}</DialogTitle>
         <DialogContent>
           <TextField
@@ -20,16 +22,18 @@ function EditFlashcardDialog(props) {
             variant="outlined"
             id="content"
             fullWidth
+            onChange={(e) => setContent(e.target.value)}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={props.handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={props.handleClose} color="primary" autoFocus>
+          <Button type="submit" color="primary" autoFocus>
             Save
           </Button>
         </DialogActions>
+        </form>
       </Dialog>
   )
 }
