@@ -6,13 +6,7 @@ import EditFlashcardDialog from "./EditFlashcardDialog";
 function EditFlashcard(props) {
 
   return (
-    <EditFlashcardDialog 
-      handleSubmit={(e) => props.handleSubmit(e)}
-      content={props.content}
-      open={props.open} 
-      handleClose = {props.handleClose}
-      id={props.id}
-    />
+    <EditFlashcardDialog open={props.open} handleClose={props.handleClose} />
   )
 }
 

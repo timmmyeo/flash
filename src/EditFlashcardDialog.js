@@ -2,15 +2,8 @@ import React from "react";
 import { Dialog, DialogActions, DialogTitle, DialogContent, Button, TextField} from "@material-ui/core";   
 
 
-
 function EditFlashcardDialog(props) {
-  let [content, setContent] = React.useState(props.content);
-
-  const handleChange = (e) => {
-    const { value } = e.target
-    setContent(value);
-  }
-
+  const [content, setContent] = React.useState("Testing");
   return (
     <Dialog
         open={props.open}
@@ -22,19 +15,18 @@ function EditFlashcardDialog(props) {
         <DialogContent>
           <TextField
             autoFocus
-            value={props.content}
+            value={content}
             label="Content"
             variant="outlined"
             id="content"
             fullWidth
-            onChange={(e) => handleChange(e)}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={props.handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={(e) => props.handleSubmit(e, props.id, content)} color="primary" autoFocus>
+          <Button onClick={props.handleClose} color="primary" autoFocus>
             Save
           </Button>
         </DialogActions>

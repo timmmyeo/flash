@@ -9,58 +9,40 @@ class App extends React.Component {
     this.state = {
       flashcards: [
         {
-          id: 1,
           title: "title", 
           subtitle: "subtitle1",
           content: "this is some text"
         },
         {
-          id: 2,
           title: "title2", 
           subtitle: "subtitle2",
           content: "this is some more text"
         },
         {
-          id: 3,
           title: "title3", 
           subtitle: "3",
-          content: "howdy"
+          content: "this is some more text"
         },
         {
-          id: 4,
           title: "yay", 
           subtitle: "more",
-          content: "zoinks"
+          content: "this is some more text"
         },
         {
-          id: 5,
           title: "title2", 
           subtitle: "subtitle2",
-          content: "yikes"
+          content: "this is some more text"
         },
         {
-          id: 6,
           title: "title2", 
           subtitle: "subtitle2",
-          content: "jeepers"
+          content: "this is some more text"
         },
       ],
     }
   }
 
   
-
-  handleSubmit = (e, id, content) => {
-    this.setState({
-      flashcards: this.state.flashcards.map(flashcard => {
-        if (flashcard.id === id) flashcard.content = content;
-        return (
-          flashcard
-        )
-        })
-    })
-    this.handleClose();
-  }
 
   render() {
     return(
@@ -72,13 +54,7 @@ class App extends React.Component {
           <Grid item container>
             <Grid item xs={1}/>
             <Grid item xs={10}>
-              <CardGrid 
-                handleSubmit={(e) => this.handleSubmit(e)} 
-                handleClose={() => this.handleClose()}
-                handleOpen={() => this.handleOpen()}
-                flashcards={this.state.flashcards}
-                open={this.state.open}
-              />
+              <CardGrid flashcards={this.state.flashcards}/>
             </Grid>
             <Grid item xs={1}/>
           </Grid>
