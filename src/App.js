@@ -9,6 +9,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { makeStyles } from '@material-ui/core/styles';
 
 function App() {
   const [flashcards, setFlashcards] = React.useState([
@@ -124,9 +125,13 @@ function App() {
             </Route>
 
             <Route exact path="/">
-              <PlayFlash />
+              <PlayFlash flashcards={flashcards}/>
             </Route>
           </Router>
+        </Grid>
+
+        <Grid item>
+
         </Grid>
 
       </Grid>
