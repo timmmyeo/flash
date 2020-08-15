@@ -1,9 +1,7 @@
 import React from "react"
 import { Grid } from "@material-ui/core";
 import Header from "./Header"
-import CardGrid from "./CardGrid"
-import AddNewCard from "./AddNewCard"
-import { v4 as uuid } from 'uuid';
+import EditAllCards from "./EditAllCards"
 
 function App() {
   const [flashcards, setFlashcards] = React.useState([
@@ -99,70 +97,24 @@ function App() {
     },
   ]);
 
-  const handleSubmit = (id, newFlashcard) => {
-    setFlashcards(prevState => {
-      let found = false;
-      let newState = prevState.map(flashcard => {
-        if (flashcard.id === id) {
-          found = true;
-          flashcard.content = newFlashcard.content;
-          flashcard.subtitle = newFlashcard.subtitle;
-          flashcard.title = newFlashcard.title;
-        }
-        return (
-          flashcard
-        )
-      })
-      if (!found) {
-        newState = [...prevState,
-        {
-          id: uuid(),
-          title: newFlashcard.title, 
-          subtitle: newFlashcard.subtitle,
-          content: newFlashcard.content
-        }
-      ]
-      }
-      return (
-        newState
-      )
-    }
-    )
-  }
-  
-  const handleDelete = (id) => {
-    setFlashcards(prevState => {
-      return (
-        prevState.filter(flashcard => flashcard.id !== id)
-      )
-    })
-  }
-
   
 
   return(
     <div>
       <Grid container direction="column">
+
         <Grid item>
           <Header />
         </Grid>
-        <Grid item container>
-          <Grid item xs={1}/>
-          <Grid item xs={10}>
-            <CardGrid 
-              flashcards={flashcards}
-              handleSubmit={(id, newFlashcard) => handleSubmit(id, newFlashcard)}
-              handleDelete={(id) => handleDelete(id)}
-            />
-          </Grid>
-          <Grid item xs={1}/>
+        
+        <Grid item>
+          <EditAllCards 
+            flashcards={flashcards} 
+            setFlashcards={setFlashcards}
+          />
         </Grid>
+
       </Grid>
-      <br />
-        <AddNewCard 
-          onSubmit={(id, newFlashcard) => handleSubmit(id, newFlashcard)}
-        />
-      <br />
     </div>
   )
   
