@@ -2,6 +2,13 @@ import React from "react"
 import { Grid } from "@material-ui/core";
 import Header from "./Header"
 import EditAllCards from "./EditAllCards"
+import PlayFlash from "./PlayFlash";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   const [flashcards, setFlashcards] = React.useState([
@@ -108,10 +115,18 @@ function App() {
         </Grid>
         
         <Grid item>
-          <EditAllCards 
-            flashcards={flashcards} 
-            setFlashcards={setFlashcards}
-          />
+          <Router>
+            <Route exact path="/edit">
+              <EditAllCards 
+                flashcards={flashcards} 
+                setFlashcards={setFlashcards}
+              />
+            </Route>
+
+            <Route exact path="/">
+              <PlayFlash />
+            </Route>
+          </Router>
         </Grid>
 
       </Grid>
