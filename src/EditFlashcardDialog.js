@@ -50,7 +50,12 @@ function EditFlashcardDialog(props) {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => { props.handleClose(); setContent(props.flashcard.content); } } color="primary">
+          <Button onClick={() => { 
+            props.handleClose(); 
+            setContent(props.flashcard.content); 
+            setTitle(props.flashcard.title);
+            setSubtitle(props.flashcard.subtitle);
+            } } color="primary">
             Cancel
           </Button>
           <Button type="submit" color="primary" autoFocus>
