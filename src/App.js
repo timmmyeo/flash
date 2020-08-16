@@ -4,7 +4,7 @@ import Header from "./Header"
 import EditAllCards from "./EditAllCards"
 import PlayFlash from "./PlayFlash";
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Switch,
   Route,
   Link
@@ -116,7 +116,7 @@ function App() {
         </Grid>
         
         <Grid item>
-          <Router basename="/">
+          <Router basename={`${process.env.PUBLIC_URL}/`}>
             <Route exact path="/edit">
               <EditAllCards 
                 flashcards={flashcards} 
