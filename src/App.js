@@ -116,7 +116,7 @@ function App() {
         </Grid>
         
         <Grid item>
-          <Router basename={process.env.PUBLIC_URL}>
+          <Router>
             <Route exact path="/edit">
               <EditAllCards 
                 flashcards={flashcards} 
