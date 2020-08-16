@@ -1,6 +1,6 @@
 It's just a small project I'm using to learn material-ui and React, don't blame me if it doesn't work properly ;)
-https://timmmmyeo.github.io/ - the main page
-https://timmmmyeo.github.io/edit - the editor for cards
+https://timmmmyeo.github.io/flash - the main page
+https://timmmmyeo.github.io/flash/edit - the editor for cards
 
 TODO:
 - Add button to reveal the content of the card
