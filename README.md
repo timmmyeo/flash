@@ -9,3 +9,4 @@ TODO:
 - Create final page, and don't allow users to switch back to a previous flashcard (maybe make this an option later)
 - Make content of the card bigger to fill the screen
 - Add a menu to switch between the editor and using the flashcards
+- Abstract out the flashcard app perhaps so that buttons and functionality are added as props
