@@ -14,7 +14,7 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 
 export default function PlayFlash(props) {
-  const [i, setI] = React.useState(3);
+  const [i, setI] = React.useState(0);
   const [revealed, setRevealed] = React.useState(false);
 
   const flashcard = props.flashcards[i];
@@ -49,6 +49,9 @@ export default function PlayFlash(props) {
     <>
     <Container maxWidth="lg">
     {/* Can I abstract this out by using the FlashCard Component? */}
+    {props.flashcards.length === 0 ?  
+    <h1>empty</h1>
+    :
     <Card className={classes.root}>
         <CardContent>
           <Typography variant="h5" component="h2">
@@ -82,8 +85,8 @@ export default function PlayFlash(props) {
         >
           {revealed ? "Hide!": "Reveal!"}
         </Button>
-      </Card>
-      
+      </Card> 
+      }
       
     </Container>
     
