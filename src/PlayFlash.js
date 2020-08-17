@@ -10,6 +10,8 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid'
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 
 export default function PlayFlash(props) {
   const [i, setI] = React.useState(3);
@@ -21,10 +23,12 @@ export default function PlayFlash(props) {
 
   const handleNext = () => {
     setI((i) => i + 1);
+    setRevealed(false);
   };
 
   const handleBack = () => {
     setI((i) => i - 1);
+    setRevealed(false);
   };
 
   const useStyles = makeStyles({
@@ -69,8 +73,20 @@ export default function PlayFlash(props) {
             </Grid>
           </Grid>
         </CardActions>
+        <Button
+          variant="contained"
+          color="primary"
+          endIcon={revealed ? <VisibilityOffIcon /> : <VisibilityIcon />}
+          fullWidth
+          onClick={() => setRevealed(!revealed)}
+        >
+          {revealed ? "Hide!": "Reveal!"}
+        </Button>
       </Card>
+      
+      
     </Container>
+    
       
 
       <MobileStepper
