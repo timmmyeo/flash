@@ -10,6 +10,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import EditRoundedIcon from '@material-ui/icons/EditRounded';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import { Link, HashRouter } from "react-router-dom";
+  
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -47,15 +49,21 @@ const Header = () =>  {
                 onKeyDown={toggleDrawer(false)}
             >
                 <List>
-                    <ListItem button key={"Home"}>
-                        <ListItemIcon><HomeRoundedIcon /></ListItemIcon>
-                        <ListItemText primary={"Home"} />
-                    </ListItem>
+                    <HashRouter>
+                        <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="/">
+                            <ListItem button key={"Home"}>
+                                <ListItemIcon><HomeRoundedIcon /></ListItemIcon>
+                                <ListItemText primary={"Home"} />
+                            </ListItem>
+                        </Link>
 
-                    <ListItem button key={"Edit"}>
-                        <ListItemIcon><EditRoundedIcon /></ListItemIcon>
-                        <ListItemText primary={"Edit"} />
-                    </ListItem>
+                        <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="/edit">
+                            <ListItem button key={"Edit"}>
+                                <ListItemIcon><EditRoundedIcon /></ListItemIcon>
+                                <ListItemText style={{ textDecoration: 'none' }} primary={"Edit"} />
+                            </ListItem>
+                        </Link>
+                    </HashRouter>
                 </List>
             </div>
         )
