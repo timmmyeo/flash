@@ -15,9 +15,10 @@ function App() {
   const [flashcards, setFlashcards] = React.useState([
     { 
       id: 1,
-      title: "This is an example title", 
-      subtitle: "This is an example subtitle",
-      content: "This is some text"
+      title: "title", 
+      subtitle: "subtitle1",
+      content: "this is some text"
+    }
   ]);
 
   
